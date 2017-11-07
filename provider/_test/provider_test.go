@@ -12,6 +12,7 @@ import (
 
 var dir, _ = os.Getwd()
 var pactDir = fmt.Sprintf("%s/../../consumer/_test/pacts", dir)
+var pactFile = fmt.Sprintf("%s/fizzer-buzzer.json", pactDir)
 var logDir = fmt.Sprintf("%s/log", dir)
 var port = 8080
 
@@ -19,8 +20,8 @@ func TestPact_Provider(t *testing.T) {
 	pact := createPact()
 
 	err := pact.VerifyProvider(types.VerifyRequest{
-		ProviderBaseURL:        fmt.Sprintf("http://localhost:%d", port),
-		PactURLs:               []string{filepath.ToSlash(fmt.Sprintf("%s/fizzer-buzzer.json", pactDir))},
+		ProviderBaseURL: fmt.Sprintf("http://localhost:%d", port),
+		PactURLs:        []string{filepath.ToSlash(pactFile)},
 	})
 
 	if err != nil {
