@@ -2,6 +2,14 @@
 
 https://golang.org/doc/install
 
+## Download this repo
+
+> N.B. Go requires projects to be on the $GOPATH
+
+```bash
+git clone git@github.com:bmaher/learning_go.git
+```
+
 ## Install pact-go
 
 https://github.com/pact-foundation/pact-go
@@ -10,6 +18,12 @@ https://github.com/pact-foundation/pact-go
 
 ```bash
 pact-go daemon
+```
+
+## Install dependencies
+
+```bash
+go get github.com/gorilla/mux
 ```
 
 ## Run the pact tests
