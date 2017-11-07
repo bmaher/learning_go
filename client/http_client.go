@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-  r, err := http.Get("http://localhost:8080/todos")
+  r, err := http.Get("http://localhost:8080/15")
   if err != nil { panic(err) }
   defer r.Body.Close()
   body, err := ioutil.ReadAll(r.Body)
