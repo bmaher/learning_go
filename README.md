@@ -1,3 +1,7 @@
+## Install go
+
+https://golang.org/doc/install
+
 ## Install pact-go
 
 https://github.com/pact-foundation/pact-go
