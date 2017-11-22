@@ -7,7 +7,7 @@ jobs:
     docker:
       # specify the version
       - image: circleci/golang:1.8
-      
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -22,5 +22,14 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-      - run: go get -v -t -d ./...
-      - run: go test -v ./...
+      - run: wget https://github.com/pact-foundation/pact-go/releases/download/v0.0.10/pact-go_linux_amd64.tar.gz
+      - run: tar -xvf pact-go_linux_amd64.tar.gz
+      - run: export PATH="/go/src/github.com/bmaher/learning_go:$PATH"
+      - run: go get github.com/gorilla/mux
+      - run: pact-go daemon
+      - run: cd consumer/_test
+      - run: go test
+      - run: cd ../../provider
+      - run: go run ./*.go &
+      - run: cd _test
+      - run: go test
